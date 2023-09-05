@@ -1,11 +1,11 @@
 {
-  "name": "back-end",
+  "name": "backend",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "start": "node --watch back-end/app.js"
+    "start": "node --watch backend/app.js"
   },
   "keywords": [],
   "author": "Wille",
