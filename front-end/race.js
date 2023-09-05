@@ -12,3 +12,15 @@ async function getArtists() {
   const data = await response.json();
   console.log(data);
 }
+
+function displayArtists() {}
+
+function createArtist() {}
+
+function updateArtist() {}
+
+function deleteArtist() {}
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}

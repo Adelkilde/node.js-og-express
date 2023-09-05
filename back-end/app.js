@@ -63,3 +63,36 @@ app.post("/artists", async (req, res) => {
   fs.writeFile("back-end/data.json", JSON.stringify(artists));
   res.json(artists);
 });
+
+app.put("/artists/:id", async (req, res) => {
+  const id = Number(req.params.id);
+
+  const data = await fs.readFile("back-end/data.json");
+  const artists = JSON.parse(data);
+
+  let artistToUpdate = artists.find((artist) => artist.id === id);
+  const body = req.body;
+  artistToUpdate.name = body.name;
+  artistToUpdate.birthdate = body.birthdate;
+  artistToUpdate.activeSince = body.activeSince;
+  artistToUpdate.genres = body.genres;
+  artistToUpdate.labels = body.labels;
+  artistToUpdate.website = body.website;
+  artistToUpdate.image = body.image;
+  artistToUpdate.shortDescription = body.shortDescription;
+
+  fs.writeFile("back-end/data.json", JSON.stringify(artists));
+  res.json(artists);
+});
+
+app.delete("/artists:id", async (req, res) => {
+  const id = Number(req.params.id);
+
+  const data = await fs.readFile("back-end/data.json");
+  const artists = JSON.parse(data);
+
+  const newArtists = artists.filter((artist) => artist.id !== id);
+  fs.writeFile("back-end/data.json", JSON.stringify(newArtists));
+
+  res.json(artists);
+});
