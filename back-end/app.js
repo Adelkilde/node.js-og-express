@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/artists", async (req, res) => {
-  const data = await fs.readFile("data.json");
+  const data = await fs.readFile("back-end/data.json");
   console.log(data);
   const artists = JSON.parse(data);
 
@@ -30,11 +30,36 @@ app.get("/artists/:id", async (req, res) => {
   const id = Number(req.params.id);
   console.log(id);
 
-  const data = await fs.readFile("data.json");
+  const data = await fs.readFile("back-end/data.json");
   const artists = JSON.parse(data);
 
   let artist = artists.find((artist) => artist.id === id);
 
-  fs.writeFile("data.json", JSON.stringify(artists));
-  res.json(artist);
+  fs.writeFile("back-end/data.json", JSON.stringify(artists));
+
+  if (!artist) {
+    res.status(404).json({ error: "Artist not found!" });
+  } else {
+    res.json(artist);
+  }
+});
+
+app.post("/artists", async (req, res) => {
+  const newArtist = req.body;
+  newArtist.id = new Date().getTime();
+  // newArtist.name;
+  // newArtist.birthdate;
+  // newArtist.activeSince;
+  // newArtist.genres;
+  // newArtist.labels;
+  // newArtist.website;
+  // newArtist.image;
+  // newArtist.shortDescription;
+
+  const data = await fs.readFile("back-end/data.json");
+  const artists = JSON.parse(data);
+
+  artists.push(newArtist);
+  fs.writeFile("back-end/data.json", JSON.stringify(artists));
+  res.json(artists);
 });
