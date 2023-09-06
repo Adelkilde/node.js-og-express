@@ -8,10 +8,38 @@
     <title>Node.js og Express</title>
   </head>
   <body>
-    <header><h1>Node.js og Express</h1></header>
+    <header>
+      <h1>Node.js og Express</h1>
+      <button id="btn-create-artist">Create New Artist</button>
+    </header>
+
     <main>
+      <section id="tools-grid">
+        <input type="search" id="search-input" placeholder="Search Artists..." />
+        <label for="select-sort-by">Sort By:</label>
+        <select name="select-sort-by" id="sort-by">
+          <option value="default">None Selected</option>
+          <option value="name">Name A-Z</option>
+          <option value="name">Name Z-A</option>
+          <option value="genre">Genre</option>
+          <option value="favorite">Favorite</option>
+        </select>
+
+        <label for="select-filter-by">Filter By:</label>
+        <select name="select-filter-by" id="filter-by">
+          <option value="filterall">Show All Genres</option>
+          <option value="pop">Pop</option>
+          <option value="soul">Soul</option>
+          <option value="country">Country</option>
+          <option value="folk">Folk</option>
+          <option value="Acoustic">Folk</option>
+          <option value="r&b">R&B</option>
+          <option value="electropop">Electropop</option>
+        </select>
+      </section>
       <section id="artists-grid" class="grid-container"></section>
     </main>
-    <script src="race.js"></script>
+
+    <script src="race.js" type="module"></script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-"use strict";
+import { getArtists, createArtist, updateArtist, deleteArtist } from "./rest-service.js";
 
 window.addEventListener("load", initApp);
 
@@ -10,12 +10,6 @@ function initApp() {
 async function updateArtistsGrid() {
   const artists = await getArtists();
   displayArtists(artists);
-}
-
-async function getArtists() {
-  const response = await fetch("../backend/data.json");
-  const data = await response.json();
-  return data;
 }
 
 function displayArtists(list) {
@@ -46,12 +40,6 @@ function displayArtists(list) {
 }
 
 function artistClicked() {}
-
-function createArtist() {}
-
-function updateArtist() {}
-
-function deleteArtist() {}
 
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });

@@ -21,9 +21,9 @@ app.get("/artists", async (req, res) => {
   console.log(data);
   const artists = JSON.parse(data);
 
-  const sortedArtists = artists.sort((a, b) => a.name.localeCompare(b.name));
+  // const sortedArtists = artists.sort((a, b) => a.name.localeCompare(b.name));
 
-  res.json(sortedArtists);
+  res.json(artists);
 });
 
 app.get("/artists/:id", async (req, res) => {
@@ -35,7 +35,7 @@ app.get("/artists/:id", async (req, res) => {
 
   let artist = artists.find((artist) => artist.id === id);
 
-  fs.writeFile("backend/data.json", JSON.stringify(artists));
+  await fs.writeFile("backend/data.json", JSON.stringify(artists));
 
   if (!artist) {
     res.status(404).json({ error: "Artist not found!" });
@@ -47,20 +47,12 @@ app.get("/artists/:id", async (req, res) => {
 app.post("/artists", async (req, res) => {
   const newArtist = req.body;
   newArtist.id = new Date().getTime();
-  // newArtist.name;
-  // newArtist.birthdate;
-  // newArtist.activeSince;
-  // newArtist.genres;
-  // newArtist.labels;
-  // newArtist.website;
-  // newArtist.image;
-  // newArtist.shortDescription;
 
   const data = await fs.readFile("backend/data.json");
   const artists = JSON.parse(data);
 
   artists.push(newArtist);
-  fs.writeFile("backend/data.json", JSON.stringify(artists));
+  await fs.writeFile("backend/data.json", JSON.stringify(artists));
   res.json(artists);
 });
 
@@ -81,18 +73,18 @@ app.put("/artists/:id", async (req, res) => {
   artistToUpdate.image = body.image;
   artistToUpdate.shortDescription = body.shortDescription;
 
-  fs.writeFile("backend/data.json", JSON.stringify(artists));
+  await fs.writeFile("backend/data.json", JSON.stringify(artists));
   res.json(artists);
 });
 
-app.delete("/artists:id", async (req, res) => {
+app.delete("/artists/:id", async (req, res) => {
   const id = Number(req.params.id);
 
   const data = await fs.readFile("backend/data.json");
   const artists = JSON.parse(data);
 
   const newArtists = artists.filter((artist) => artist.id !== id);
-  fs.writeFile("backend/data.json", JSON.stringify(newArtists));
+  await fs.writeFile("backend/data.json", JSON.stringify(newArtists));
 
-  res.json(artists);
+  res.json(newArtists);
 });
