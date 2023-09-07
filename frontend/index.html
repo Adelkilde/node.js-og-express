@@ -14,29 +14,22 @@
     </header>
 
     <main>
-      <section id="tools-grid">'
+      <section id="tools-grid">
         <div>
         <input type="search" id="search-input" placeholder="Search Artists..." />
       </div>
         <label for="select-sort-by">Sort By:</label>
-        <select name="select-sort-by" id="sort-by">
+        <select name="select-sort-by" id="select-sort-by">
           <option value="default">None Selected</option>
-          <option value="name">Name A-Z</option>
-          <option value="name">Name Z-A</option>
-          <option value="genre">Genre</option>
-          <option value="favorite">Favorite</option>
+          <option value="nameAZ">Name A-Z</option>
+          <option value="nameZA">Name Z-A</option>
+          <option value="genres">Genre</option>
         </select>
 
         <label for="select-filter-by">Filter By:</label>
-        <select name="select-filter-by" id="filter-by">
-          <option value="filterall">Show All Genres</option>
-          <option value="pop">Pop</option>
-          <option value="soul">Soul</option>
-          <option value="country">Country</option>
-          <option value="folk">Folk</option>
-          <option value="Acoustic">Folk</option>
-          <option value="r&b">R&B</option>
-          <option value="electropop">Electropop</option>
+        <select name="select-filter-by" id="select-filter-by">
+          <option value="filterall">Show All Artists</option>
+          <option value="favorite">Show Favorite Artists</option>
         </select>
       </section>
       <section id="artists-grid" class="grid-container"></section>
@@ -115,7 +108,7 @@
           id="activeSince"
           name="activeSince"
           placeholder="Enter new active since date"
-          minlength="5"
+          minlength="4"
           required
         />
         <label for="genres">Genres:</label>

@@ -37,4 +37,15 @@ async function deleteArtist(id) {
   return response;
 }
 
-export { getArtists, createArtist, updateArtist, deleteArtist };
+async function changeFavorite(artist) {
+  const response = await fetch(`${endpoint}/artists/favorite/${artist.id}`, {
+    method: "PUT",
+  });
+  if (response.ok) {
+    return response;
+  } else {
+    console.error("Failed to change favorite status. Status: " + response.satus);
+  }
+}
+
+export { getArtists, createArtist, updateArtist, deleteArtist, changeFavorite };

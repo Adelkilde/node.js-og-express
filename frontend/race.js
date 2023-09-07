@@ -1,5 +1,5 @@
-import { getArtists, createArtist, updateArtist, deleteArtist } from "./rest-service.js";
-import { scrollToTop } from "./helpers.js";
+import { getArtists, createArtist, updateArtist, deleteArtist, changeFavorite } from "./rest-service.js";
+import { scrollToTop, searchArtists, compareNameAZ, compareNameZA, compareGenres } from "./helpers.js";
 
 let artists;
 
@@ -14,7 +14,8 @@ function initApp() {
   document.querySelector("#form-update-artist").addEventListener("submit", updateArtistClicked);
   document.querySelector("#form-delete-artist").addEventListener("submit", deleteArtistClicked);
   document.querySelector("#form-delete-artist .btn-cancel").addEventListener("click", deleteCancelClicked);
-  // document.querySelector("#select-sort-by").addEventListener("change", sortByChanged);
+  document.querySelector("#select-filter-by").addEventListener("change", filterChanged);
+  document.querySelector("#select-sort-by").addEventListener("change", sortByChanged);
   document.querySelector("#search-input").addEventListener("keyup", inputSearchChanged);
   document.querySelector("#search-input").addEventListener("search", inputSearchChanged);
 }
@@ -83,14 +84,16 @@ function deleteCancelClicked() {
 
 function inputSearchChanged(event) {
   const value = event.target.value;
+  console.log(value);
   const artistsToShow = searchArtists(value);
+  console.log(artistsToShow);
   displayArtists(artistsToShow);
 }
 
 // ============== Artists ============== //
 
 async function updateArtistsGrid() {
-  const artists = await getArtists();
+  artists = await getArtists();
   displayArtists(artists);
 }
 
@@ -98,6 +101,7 @@ function displayArtists(list) {
   document.querySelector("#artists-grid").innerHTML = "";
 
   for (const artist of list) {
+    const favoriteButtonText = artist.favorite ? "Remove from favorites" : "Add to favorites";
     document.querySelector("#artists-grid").insertAdjacentHTML(
       "beforeend",
       /*html*/ `
@@ -113,6 +117,7 @@ function displayArtists(list) {
       <div class="btns">
         <button class="btn-update-artist">Update</button>
         <button class="btn-delete-artist">Delete</button>
+        <button class="fav-btn">${favoriteButtonText}</button>
       </div>
       </article>`
     );
@@ -122,6 +127,9 @@ function displayArtists(list) {
     document
       .querySelector("#artists-grid article:last-child .btn-delete-artist")
       .addEventListener("click", () => deleteClicked(artist));
+    document
+      .querySelector("#artists-grid article:last-child .fav-btn")
+      .addEventListener("click", () => favoriteClicked(artist));
   }
 }
 
@@ -139,14 +147,43 @@ function updateClicked(artist) {
   document.querySelector("#dialog-update-artist").showModal();
 }
 
+async function favoriteClicked(artist) {
+  const response = await changeFavorite(artist);
+  if (response.ok) {
+    updateArtistsGrid();
+  }
+}
+
 function deleteClicked(artist) {
   document.querySelector("#dialog-delete-artist-name").textContent = artist.name;
   document.querySelector("#form-delete-artist").setAttribute("data-id", artist.id);
   document.querySelector("#dialog-delete-artist").showModal();
 }
 
-function searchArtists(searchValue) {
-  searchValue = searchValue.toLowerCase();
-  const results = artists.filter((artists) => artist.name.toLowerCase().includes(searchValue));
-  return results;
+async function sortByChanged() {
+  const sortField = document.querySelector("#select-sort-by").value;
+  const artists = await getArtists();
+
+  if (sortField === "nameAZ") {
+    artists.sort(compareNameAZ);
+  } else if (sortField === "nameZA") {
+    artists.sort(compareNameZA);
+  } else if (sortField === "genre") {
+    artists.sort(compareGenres);
+  }
+
+  displayArtists(artists);
 }
+
+async function filterChanged() {
+  const filterField = document.querySelector("#select-filter-by").value;
+  const artists = await getArtists();
+  if (filterField === "filterall") {
+    displayArtists(artists);
+  } else {
+    const artistsFavorited = artists.filter((artist) => artist.favorite === true);
+    displayArtists(artistsFavorited);
+  }
+}
+
+export { artists };

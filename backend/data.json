@@ -2,13 +2,14 @@
   {
     "id": 1,
     "name": "Adele",
-    "birthdate": "May 5, 1988",
+    "birthdate": "May 5, 1986",
     "activeSince": "2006",
     "genres": "Pop,Soul",
     "labels": "XL Recordings,Columbia Records",
     "website": "https://www.adele.com",
     "image": "https://upload.wikimedia.org/wikipedia/commons/5/52/Adele_for_Vogue_in_2021.png",
-    "shortDescription": "Adele Laurie Blue Adkins is an English singer-songwriter known for her powerful voice and emotional ballads."
+    "shortDescription": "Adele Laurie Blue Adkins is an English singer-songwriter known for her powerful voice and emotional ballads.",
+    "favorite": true
   },
   {
     "id": 2,
@@ -19,7 +20,8 @@
     "labels": ["Big Machine Records", "Republic Records"],
     "website": "https://www.taylorswift.com",
     "image": "taylor_swift.jpg",
-    "shortDescription": "Taylor Alison Swift is an American singer-songwriter known for her narrative songwriting."
+    "shortDescription": "Taylor Alison Swift is an American singer-songwriter known for her narrative songwriting.",
+    "favorite": false
   },
   {
     "id": 3,
@@ -30,7 +32,8 @@
     "labels": "Asylum Records,Atlantic Records",
     "website": "https://www.edsheeran.com",
     "image": "ed_sheeran.jpg",
-    "shortDescription": "Ed Sheeran is an English singer-songwriter known for his melodic pop songs."
+    "shortDescription": "Ed Sheeran is an English singer-songwriter known for his melodic pop songs.",
+    "favorite": true
   },
   {
     "id": 4,
@@ -41,7 +44,8 @@
     "labels": ["Columbia Records", "Parkwood Entertainment"],
     "website": "https://www.beyonce.com",
     "image": "beyonce.jpg",
-    "shortDescription": "Beyoncé Giselle Knowles-Carter is an American singer, songwriter, and actress."
+    "shortDescription": "Beyoncé Giselle Knowles-Carter is an American singer, songwriter, and actress.",
+    "favorite": false
   },
   {
     "id": 5,
@@ -52,7 +56,8 @@
     "labels": ["GOOD Music", "Columbia Records"],
     "website": "https://www.johnlegend.com",
     "image": "john_legend.jpg",
-    "shortDescription": "John Roger Stephens, known professionally as John Legend, is an American singer, songwriter, and pianist."
+    "shortDescription": "John Roger Stephens, known professionally as John Legend, is an American singer, songwriter, and pianist.",
+    "favorite": false
   },
   {
     "id": 6,
@@ -63,7 +68,8 @@
     "labels": ["Darkroom", "Interscope Records"],
     "website": "https://www.billieeilish.com",
     "image": "billie_eilish.jpg",
-    "shortDescription": "Billie Eilish Pirate Baird O'Connell is an American singer-songwriter known for her unique style and sound."
+    "shortDescription": "Billie Eilish Pirate Baird O'Connell is an American singer-songwriter known for her unique style and sound.",
+    "favorite": false
   },
   {
     "name": "Corey Taylor",
@@ -74,6 +80,7 @@
     "website": "https://www.coreytaylor.com",
     "image": "https://example.com/corey_taylor_image.png",
     "shortDescription": "Corey Taylor is a renowned rock and heavy metal vocalist known for his work with Slipknot and Stone Sour.",
+    "favorite": false,
     "id": 1694091859596
   }
 ]

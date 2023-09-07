@@ -88,3 +88,15 @@ app.delete("/artists/:id", async (req, res) => {
 
   res.json(artists);
 });
+
+app.put("/artists/favorite/:id", async (req, res) => {
+  const id = req.params.id;
+
+  const data = await fs.readFile("backend/data.json");
+  const artists = JSON.parse(data);
+  let artistToFavorite = artists.find((artist) => artist.id == id);
+  artistToFavorite.favorite = !artistToFavorite.favorite;
+
+  await fs.writeFile("backend/data.json", JSON.stringify(artists));
+  res.json(artists);
+});
