@@ -83,7 +83,7 @@ app.delete("/artists/:id", async (req, res) => {
   const data = await fs.readFile("backend/data.json");
   const artists = JSON.parse(data);
 
-  artists = artists.filter((artist) => artist.id !== id);
+  const newArtists = artists.filter((artist) => artist.id !== id);
   await fs.writeFile("backend/data.json", JSON.stringify(newArtists));
 
   res.json(artists);

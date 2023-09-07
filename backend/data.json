@@ -4,8 +4,8 @@
     "name": "Adele",
     "birthdate": "May 5, 1988",
     "activeSince": "2006",
-    "genres": ["Pop", "Soul"],
-    "labels": ["XL Recordings", "Columbia Records"],
+    "genres": "Pop,Soul",
+    "labels": "XL Recordings,Columbia Records",
     "website": "https://www.adele.com",
     "image": "https://upload.wikimedia.org/wikipedia/commons/5/52/Adele_for_Vogue_in_2021.png",
     "shortDescription": "Adele Laurie Blue Adkins is an English singer-songwriter known for her powerful voice and emotional ballads."
@@ -26,8 +26,8 @@
     "name": "Ed Sheeran",
     "birthdate": "February 17, 1991",
     "activeSince": "2004",
-    "genres": ["Pop", "Folk", "Acoustic"],
-    "labels": ["Asylum Records", "Atlantic Records"],
+    "genres": "Pop,Folk,Acoustic",
+    "labels": "Asylum Records,Atlantic Records",
     "website": "https://www.edsheeran.com",
     "image": "ed_sheeran.jpg",
     "shortDescription": "Ed Sheeran is an English singer-songwriter known for his melodic pop songs."
@@ -64,5 +64,16 @@
     "website": "https://www.billieeilish.com",
     "image": "billie_eilish.jpg",
     "shortDescription": "Billie Eilish Pirate Baird O'Connell is an American singer-songwriter known for her unique style and sound."
+  },
+  {
+    "name": "Corey Taylor",
+    "birthdate": "December 8, 1973",
+    "activeSince": "1992",
+    "genres": "Rock, Heavy Metal",
+    "labels": "Roadrunner Records",
+    "website": "https://www.coreytaylor.com",
+    "image": "https://example.com/corey_taylor_image.png",
+    "shortDescription": "Corey Taylor is a renowned rock and heavy metal vocalist known for his work with Slipknot and Stone Sour.",
+    "id": 1694091859596
   }
 ]

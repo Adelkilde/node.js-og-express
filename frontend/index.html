@@ -14,8 +14,10 @@
     </header>
 
     <main>
-      <section id="tools-grid">
+      <section id="tools-grid">'
+        <div>
         <input type="search" id="search-input" placeholder="Search Artists..." />
+      </div>
         <label for="select-sort-by">Sort By:</label>
         <select name="select-sort-by" id="sort-by">
           <option value="default">None Selected</option>
@@ -39,6 +41,118 @@
       </section>
       <section id="artists-grid" class="grid-container"></section>
     </main>
+
+    <dialog id="dialog-create-artist">
+      <h2>Create New Artist</h2>
+      <form id="form-create-artist" method="dialog">
+        <label for="name">Name:</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Type artist name"
+          minlength="3"
+          maxlength="100"
+          required
+        />
+        <label for="birthdate">Birthdate:</label>
+        <input type="text" id="birthdate" name="birthdate" placeholder="Type artist birthdate" minlength="5" required />
+        <label for="activeSince">Active Since:</label>
+        <input
+          type="text"
+          id="activeSince"
+          name="activeSince"
+          placeholder="Enter artist's active since date"
+          minlength="4"
+          required
+        />
+        <label for="genres">Genres:</label>
+        <input type="text" id="genres" name="genres" placeholder="Type artist genres" minlength="5" required />
+        <label for="labels">Labels:</label>
+        <input type="text" id="labels" name="labels" placeholder="Type artist labels" minlength="5" required />
+        <label for="website">Website:</label>
+        <input type="text" id="website" name="website" placeholder="Type artist website URL" minlength="5" required />
+        <label for="image">Image:</label>
+        <input type="text" id="image" name="image" placeholder="Type artist image URL" minlength="5" required />
+        <label for="shortDescription">Short Description:</label>
+        <input
+          type="text"
+          id="shortDescription"
+          name="shortDescription"
+          placeholder="Type artist short description"
+          minlength="5"
+          required
+        />
+        <button>Create Artist</button>
+      </form>
+    </dialog>
+
+    <dialog id="dialog-update-artist">
+      <h2>Update Artist</h2>
+      <form id="form-update-artist" method="dialog">
+        <label for="name">Name:</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Type new artist name"
+          minlength="3"
+          maxlength="100"
+          required
+        />
+        <label for="birthdate">Birthdate:</label>
+        <input
+          type="text"
+          id="birthdate"
+          name="birthdate"
+          placeholder="Type new artist birthdate"
+          minlength="5"
+          required
+        />
+        <label for="activeSince">Active Since:</label>
+        <input
+          type="text"
+          id="activeSince"
+          name="activeSince"
+          placeholder="Enter new active since date"
+          minlength="5"
+          required
+        />
+        <label for="genres">Genres:</label>
+        <input type="text" id="genres" name="genres" placeholder="Type new artist genres" minlength="5" required />
+        <label for="labels">Labels:</label>
+        <input type="text" id="labels" name="labels" placeholder="Type new artist labels" minlength="5" required />
+        <label for="website">Website:</label>
+        <input
+          type="text"
+          id="website"
+          name="website"
+          placeholder="Type new artist website URL"
+          minlength="5"
+          required
+        />
+        <label for="image">Image:</label>
+        <input type="text" id="image" name="image" placeholder="Type new artist image URL" minlength="5" required />
+        <label for="shortDescription">Short Description:</label>
+        <input
+          type="text"
+          id="shortDescription"
+          name="shortDescription"
+          placeholder="Type new artist short description"
+          minlength="5"
+          required
+        />
+        <button>Update Artist</button>
+      </form>
+    </dialog>
+
+    <dialog id="dialog-delete-artist">
+      <h2>Do you want to delete Artist?</h2>
+      <p id="dialog-delete-artist-name">Name of Artist</p>
+        <form id="form-delete-artist" method="dialog">
+            <button type="button" class="btn-cancel">No</button>
+            <button>Yes</button>
+    </dialog>
 
     <script src="race.js" type="module"></script>
   </body>
